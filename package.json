@@ -1,0 +1,33 @@
+{
+  "name": "bc-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "dev:local": "dotenv -e .env nodemon index.js",
+    "dev:atlas": "dotenv -e .env.atlas nodemon index.js"
+  },
+  "keywords": [],
+  "author": "Moshe Green",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "chalk": "^5.4.1",
+    "config": "^4.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0",
+    "fs": "^0.0.1-security",
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
+    "moment": "^2.30.1",
+    "mongoose": "^8.16.2",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^10.0.0"
+  }
+}

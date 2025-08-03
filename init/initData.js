@@ -7,9 +7,6 @@ export const initData = async () => {
     const userCount = await User.countDocuments();
     const cardCount = await Card.countDocuments();
 
-    console.log(`User count: ${userCount}`);
-    console.log(`Card count: ${cardCount}`);
-
     if (userCount === 0) {
       const hashedPassword = await bcrypt.hash('Abc!12345', 10); 
 
@@ -81,7 +78,6 @@ export const initData = async () => {
       console.log('Users already exist. Skipping user seeding.');
     }
 
-    // Seed Cards
     if (cardCount === 0) {
       const businessUser = await User.findOne({ isBusiness: true });
 

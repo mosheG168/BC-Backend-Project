@@ -6,7 +6,7 @@ const cardSchema = new mongoose.Schema({
   description: { type: String, required: true, minlength: 2, maxlength: 1024 },
   phone: { type: String, required: true, match: /^[0-9]{9,11}$/ },
   email: { type: String, required: true, match: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ },
-  web: { type: String, match: /^https?:\/\/.+/ }, //* Ensure valid URL if provided
+  web: { type: String, match: /^https?:\/\/.+/ }, 
 
   image: {
     url: { type: String, required: true, minlength: 14, match: /^https?:\/\/.+/ },
@@ -28,7 +28,7 @@ const cardSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
-//* Automatically assign a unique random bizNumber if not present
+
 cardSchema.pre('save', async function (next) {
   if (!this.bizNumber) {
     let unique = false;

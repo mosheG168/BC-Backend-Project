@@ -1,6 +1,5 @@
 import Card from '../models/Card.js';
 
-// Get all cards
 export const getCards = async (req, res, next) => {
   try {
     const cards = await Card.find();
@@ -10,7 +9,6 @@ export const getCards = async (req, res, next) => {
   }
 };
 
-// Get card by ID
 export const getCardById = async (req, res, next) => {
   try {
     const card = await Card.findById(req.params.id);
@@ -21,7 +19,6 @@ export const getCardById = async (req, res, next) => {
   }
 };
 
-// Get cards created by the logged-in user
 export const getMyCards = async (req, res, next) => {
   try {
     const cards = await Card.find({ user_id: req.user._id });
@@ -31,7 +28,6 @@ export const getMyCards = async (req, res, next) => {
   }
 };
 
-// Create a new card (Business users only)
 export const createCard = async (req, res, next) => {
   try {
     if (!req.user.isBusiness) {
@@ -46,7 +42,6 @@ export const createCard = async (req, res, next) => {
   }
 };
 
-// Update a card (Owner only)
 export const updateCard = async (req, res, next) => {
   try {
     const card = await Card.findById(req.params.id);
@@ -65,7 +60,6 @@ export const updateCard = async (req, res, next) => {
   }
 };
 
-// Delete a card (Owner or Admin)
 export const deleteCard = async (req, res, next) => {
   try {
     const card = await Card.findById(req.params.id);
@@ -82,7 +76,6 @@ export const deleteCard = async (req, res, next) => {
   }
 };
 
-// Like or unlike a card
 export const toggleLike = async (req, res, next) => {
   try {
     const card = await Card.findById(req.params.id);
@@ -102,7 +95,6 @@ export const toggleLike = async (req, res, next) => {
   }
 };
 
-// Admin-only: Change bizNumber
 export const changeBizNumber = async (req, res, next) => {
   try {
     const { bizNumber } = req.body;

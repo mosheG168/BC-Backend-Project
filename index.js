@@ -10,7 +10,6 @@ import { initData } from './init/initData.js';
 import cardsRouter from './routes/cards.js';
 import usersRouter from './routes/users.js';
 
-// Load environment file based on mode
 const envFile = process.env.NODE_ENV === 'production' ? '.env.atlas' : '.env';
 dotenv.config({ path: envFile });
 console.log(`🌍 Loaded ${envFile}`);
@@ -20,7 +19,6 @@ const app = express();
 const PORT = process.env.PORT || 3700;
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/bcards-backend';
 
-//* Middleware
 app.use(express.json());
 app.use(morgan('dev'));
 app.use(cors({
@@ -30,7 +28,6 @@ app.use(cors({
   allowedHeaders: 'Content-Type, Accept, Authorization',
 }));
 
-//* File Logger Middleware
 app.use((req, res, next) => {
   res.on('finish', () => {
     if (res.statusCode >= 400) {
@@ -47,7 +44,6 @@ app.use((req, res, next) => {
   next();
 });
 
-//* MongoDB Connection
 const connectDB = async () => {
   try {
     await mongoose.connect(MONGO_URI);
@@ -60,19 +56,16 @@ const connectDB = async () => {
 };
 await connectDB();
 
-//* Routes
 app.use('/cards', cardsRouter);
 app.use('/users', usersRouter);
 app.get('/', (req, res) => res.json({ message: "API is running" }));
 
-//* 404 Handler
 app.use((req, res) => {
   res.status(404);
   res.locals.errorMessage = 'Route not found';
   res.json({ error: 'Route not found' });
 });
 
-//* General Error Handler
 app.use((err, req, res, next) => {
   console.error('🔥 Error:', err.message);
   res.locals.errorMessage = err.message;
@@ -81,7 +74,6 @@ app.use((err, req, res, next) => {
   });
 });
 
-//* Start Server
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
 });

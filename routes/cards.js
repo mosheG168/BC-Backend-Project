@@ -14,10 +14,7 @@ import { validateCard, validateBizNumber } from '../validators/cardValidator.js'
 
 const router = express.Router();
 
-//* Public Routes
 router.get('/', getCards);
-
-//* Authenticated User Routes
 router.get('/my-cards', authGuard, getMyCards);
 router.patch('/:id/biz-number', authGuard, adminGuard, validateBizNumber, changeBizNumber);
 router.get('/:id', getCardById);

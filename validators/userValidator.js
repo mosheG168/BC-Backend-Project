@@ -1,25 +1,20 @@
 import Joi from 'joi';
 
-// Regex for password: min 9 chars, uppercase, lowercase, digit, special char
 const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*-]).{9,}$/;
 
-// Regex for Israeli phone number (e.g., 05XXXXXXXX)
 const israeliPhonePattern = /^05\d{8}$/;
 
-// Nested schema for name
 const nameSchema = Joi.object({
   first: Joi.string().min(2).max(256).required(),
   middle: Joi.string().allow('').max(256),
   last: Joi.string().min(2).max(256).required(),
 }).required();
 
-// Image schema (optional)
 const imageSchema = Joi.object({
   url: Joi.string().uri().allow(''),
   alt: Joi.string().allow(''),
 }).optional();
 
-// Address schema
 const addressSchema = Joi.object({
   state: Joi.string().min(2).max(256).required(),
   country: Joi.string().min(2).max(256).required(),
@@ -29,7 +24,6 @@ const addressSchema = Joi.object({
   zip: Joi.number().required(),
 }).required();
 
-// Register schema
 export const registerSchema = Joi.object({
   name: nameSchema,
   phone: Joi.string().pattern(israeliPhonePattern).required()

@@ -1,0 +1,10 @@
+[2025-08-03T12:13:01.019Z] PATCH /cards/:id → 401 Unauthorized
+[2025-08-03T12:13:09.780Z] PATCH /cards/:id → 500 Cast to ObjectId failed for value ":id" (type string) at path "_id" for model "Card"
+[2025-08-03T12:17:22.551Z] PATCH /cards/:688f51ebfc7580a2b57eb7c1 → 500 Cast to ObjectId failed for value ":688f51ebfc7580a2b57eb7c1" (type string) at path "_id" for model "Card"
+[2025-08-03T12:21:52.058Z] POST /users → 400 Bad Request
+[2025-08-03T12:22:07.961Z] POST /users/login → 400 Bad Request
+[2025-08-03T12:22:12.525Z] POST /users/login → 400 Bad Request
+[2025-08-03T12:22:13.525Z] POST /users/login → 403 Forbidden
+[2025-08-03T12:22:18.855Z] POST /users/login → 403 Forbidden
+[2025-08-03T12:25:02.328Z] PATCH /cards/:id/biz-number → 500 Cast to ObjectId failed for value ":id" (type string) at path "_id" for model "Card"
+[2025-08-03T12:27:24.972Z] GET /cards/:id → 500 Cast to ObjectId failed for value ":id" (type string) at path "_id" for model "Card"

@@ -12,8 +12,6 @@ import usersRouter from './routes/users.js';
 
 const envFile = process.env.NODE_ENV === 'production' ? '.env.atlas' : '.env';
 dotenv.config({ path: envFile });
-console.log(`🌍 Loaded ${envFile}`);
-console.log(`🌱 Running in ${process.env.NODE_ENV || 'development'} mode`);
 
 const app = express();
 const PORT = process.env.PORT || 3700;
@@ -47,7 +45,6 @@ app.use((req, res, next) => {
 const connectDB = async () => {
   try {
     await mongoose.connect(MONGO_URI);
-    console.log('✅ MongoDB connected');
     await initData();
   } catch (error) {
     console.error('❌ MongoDB connection error:', error.message);

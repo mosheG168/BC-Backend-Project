@@ -10,7 +10,7 @@ export const initData = async () => {
     if (userCount === 0) {
       const hashedPassword = await bcrypt.hash('Abc!12345', 10); 
 
-      const users = await User.insertMany([
+      await User.insertMany([
         {
           name: { first: 'John', middle: '', last: 'Doe' },
           phone: '0501234567',
@@ -72,17 +72,13 @@ export const initData = async () => {
           isAdmin: true
         }
       ]);
-
-      console.log('✅ Users seeded:', users.map((u) => u.email));
-    } else {
-      console.log('Users already exist. Skipping user seeding.');
     }
 
     if (cardCount === 0) {
       const businessUser = await User.findOne({ isBusiness: true });
 
       if (businessUser) {
-        const cards = await Card.insertMany([
+        await Card.insertMany([
           {
             title: 'Business Card 1',
             subtitle: 'Quality Service',
@@ -150,13 +146,7 @@ export const initData = async () => {
             user_id: businessUser._id
           }
         ]);
-
-        console.log('✅ Cards seeded:', cards.map((c) => c.title));
-      } else {
-        console.log('⚠️ No business user found. Cards not seeded.');
       }
-    } else {
-      console.log('Cards already exist. Skipping card seeding.');
     }
   } catch (err) {
     console.error('❌ Error during initData:', err.message);
